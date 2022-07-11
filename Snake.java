@@ -111,7 +111,7 @@ public class Snake extends JFrame {
             yCoor[i] = 0 - (i * 30);
           }
         }
-        if(yCoor[0] > BOARD_HEIGHT || yCoor[0] < 0 ){
+        if(yCoor[0] > BOARD_WIDTH){
           for(int i = 0; i < snakeSize; i++){
             yCoor[i] = 120 - (i * 30);
             xCoor[i] = 120 - (i*30);
@@ -123,6 +123,9 @@ public class Snake extends JFrame {
             yCoor[i] = 120 - (i * 30);
           }
         }
+        if (yCoor[0] > BOARD_HEIGHT || yCoor[0] < 0 ) {
+             inGame = false;
+            
         /* Check for collisions. */
         for(int i = 1; i < xCoor.length; i++){
           if (xCoor[0] == xCoor[i] && yCoor[0] == yCoor[i]){
