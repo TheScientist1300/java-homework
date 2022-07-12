@@ -106,26 +106,36 @@ public class Snake extends JFrame {
             xCoor[i] = 0 - (i * 30);
           }
         }
-        if(yCoor[0] > BOARD_WIDTH){
+        if(xCoor[0] < 0){
+          for(int i = 0; i < snakeSize; i++){
+            xCoor[i] = BOARD_WIDTH - (i * 30);
+          }
+        }
+        if(yCoor[0] > BOARD_HEIGHT){
           for(int i = 0; i < snakeSize; i++){
             yCoor[i] = 0 - (i * 30);
           }
         }
-        if(yCoor[0] > BOARD_WIDTH){
+
+        if(yCoor[0] < 0){
           for(int i = 0; i < snakeSize; i++){
-            yCoor[i] = 120 - (i * 30);
-            xCoor[i] = 120 - (i*30);
+            yCoor[i] = BOARD_HEIGHT - (i * 30);
           }
         }
-        if(xCoor[0] < 0 || xCoor[0] > BOARD_HEIGHT){
-          for(int i = 0; i < snakeSize; i++){
-            xCoor[i] = 120 - (i * 30);
-            yCoor[i] = 120 - (i * 30);
+
+
+        if (xCoor[0] < 0 || yCoor[0] > BOARD_HEIGHT || yCoor[0] < 0 ) {
+          inGame = false;
+        }
+
+
+
+        /* Check for collisions. */
+        for(int i = 1; i < xCoor.length; i++){
+          if (xCoor[0] == xCoor[i] && yCoor[0] == yCoor[i]){
+              inGame = false;
           }
         }
-        if (yCoor[0] > BOARD_HEIGHT || yCoor[0] < 0 ) {
-             inGame = false;
-            
         /* Check for collisions. */
         for(int i = 1; i < xCoor.length; i++){
           if (xCoor[0] == xCoor[i] && yCoor[0] == yCoor[i]){
